@@ -15,12 +15,12 @@ defmodule Rumbl.UserTests do
     [valid_attrs: valid_attrs, invalid_attrs: invalid_attrs]
   end
 
-  test "create_user/0 creates for valid user", %{valid_attrs: valid_attrs} do
+  test "create_user/1 creates for valid user", %{valid_attrs: valid_attrs} do
     {:ok, user} = Accounts.create_user(valid_attrs)
     assert user.name == "kongo"
   end
 
-  test "create_user/0 throws error for invalid attrs", %{invalid_attrs: invalid_attrs} do
+  test "create_user/1 throws error for invalid attrs", %{invalid_attrs: invalid_attrs} do
     {:error, changeset} = Accounts.create_user(invalid_attrs)
     assert changeset.valid? == false
   end

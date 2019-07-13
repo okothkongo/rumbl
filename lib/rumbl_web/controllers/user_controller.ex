@@ -3,11 +3,18 @@ defmodule RumblWeb.UserController do
   alias Rumbl.Accounts
   alias Rumbl.Accounts.User
 
-  def new(conn, _parmas) do
+  def new(conn, _params) do
     changeset = User.changeset(%User{}, %{})
 
     conn
     |> render("new.html", changeset: changeset)
+  end
+
+  def index(conn, _params) do
+    users = Accounts.list_users()
+
+    conn
+    |> render("index.html", users: users)
   end
 
   def create(conn, %{"user" => params}) do

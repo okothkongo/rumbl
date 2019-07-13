@@ -7,4 +7,9 @@ defmodule Rumbl.Accounts do
     |> User.changeset(attrs)
     |> Repo.insert()
   end
+
+  def list_users do
+    User
+    |> Repo.all()
+  end
 end

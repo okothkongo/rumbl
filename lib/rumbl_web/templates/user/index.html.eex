@@ -1,0 +1,24 @@
+<h1>All Users</h1>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+       <th>User Name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <%= for user <- @users do %>
+    <tr>
+      <th>
+      <%=user.name%>      
+      </th>    
+      <th>
+       <%= user.username%>
+      </th>  
+        <th>
+      <%=link "View", to: Routes.page_path(@conn, :index)  %>
+      </th>    
+    </tr>    
+    <%end %>
+  </tbody>
+</table>
