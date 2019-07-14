@@ -18,10 +18,10 @@ defmodule RumblWeb.UserController do
   end
 
   def create(conn, %{"user" => params}) do
-    with {:ok, _user} <- Accounts.create_user(params) do
+    with {:ok, user} <- Accounts.register_user(params) do
       conn
-      |> put_flash(:info, "User created Successfully")
-      |> redirect(to: Routes.page_path(conn, :index))
+      |> put_flash(:info, "#{user.username} was successfully registered")
+      |> redirect(to: Routes.user_path(conn, :index))
     else
       {:error, %Ecto.Changeset{} = changeset} ->
         conn
