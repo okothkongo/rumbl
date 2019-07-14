@@ -29,4 +29,11 @@ defmodule RumblWeb.UserController do
         |> render("new.html", changeset: changeset)
     end
   end
+
+  def show(conn, %{"id" => id}) do
+    user = Accounts.get_user(id)
+
+    conn
+    |> render("show.html", user: user)
+  end
 end
